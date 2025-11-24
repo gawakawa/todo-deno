@@ -4,9 +4,9 @@ import {
   assertExists,
   assertGreater,
   assertInstanceOf,
-} from "jsr:@std/assert";
-import { afterEach, describe, it } from "jsr:@std/testing/bdd";
-import "npm:fake-indexeddb/auto";
+} from "@std/assert";
+import { afterEach, describe, it } from "@std/testing/bdd";
+import "fake-indexeddb/auto";
 import { addTodo, deleteTodo, getTodos, initDB, updateTodo } from "./db.ts";
 import type { Todo } from "./types.ts";
 
