@@ -7,7 +7,7 @@ import {
 } from "jsr:@std/assert";
 import { afterEach, describe, it } from "jsr:@std/testing/bdd";
 import "npm:fake-indexeddb/auto";
-import { addTodo, getTodos, initDB, updateTodo } from "./db.ts";
+import { addTodo, deleteTodo, getTodos, initDB, updateTodo } from "./db.ts";
 import type { Todo } from "./types.ts";
 
 afterEach(async () => {
@@ -216,6 +216,46 @@ describe("updateTodo", () => {
     const countBefore = todosBefore.length;
 
     await updateTodo(99999, { title: "存在しない" });
+
+    const todosAfter = await getTodos();
+    assertEquals(todosAfter.length, countBefore);
+    assertEquals(todosAfter.length, 1);
+  });
+});
+
+describe("deleteTodo", () => {
+  it("Todoが削除される", async () => {
+    const id1 = await addTodo("削除するTodo");
+    const id2 = await addTodo("残すTodo");
+
+    await deleteTodo(id1);
+
+    const todos = await getTodos();
+    assertEquals(todos.length, 1);
+    assertEquals(todos[0].id, id2);
+    assertEquals(todos[0].title, "残すTodo");
+  });
+
+  it("削除後、getTodos()で取得できない", async () => {
+    const id = await addTodo("削除するTodo");
+
+    const todosBefore = await getTodos();
+    assertEquals(todosBefore.length, 1);
+
+    await deleteTodo(id);
+
+    const todosAfter = await getTodos();
+    assertEquals(todosAfter.length, 0);
+    const deletedTodo = todosAfter.find((t) => t.id === id);
+    assertEquals(deletedTodo, undefined);
+  });
+
+  it("存在しないIDを削除しても正常終了する", async () => {
+    await addTodo("既存Todo");
+    const todosBefore = await getTodos();
+    const countBefore = todosBefore.length;
+
+    await deleteTodo(99999);
 
     const todosAfter = await getTodos();
     assertEquals(todosAfter.length, countBefore);
