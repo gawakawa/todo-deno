@@ -4,7 +4,8 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "jsxImportSourceTypes": "@types/react"
+    "jsxImportSourceTypes": "@types/react",
+    "lib": ["dom", "dom.iterable", "esnext"]
   },
   "tasks": {
     "dev": "deno run --node-modules-dir=auto --allow-net --allow-read --allow-write --allow-env --allow-ffi --allow-sys --allow-run npm:rolldown-vite@7.2.5",
