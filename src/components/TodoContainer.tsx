@@ -1,6 +1,6 @@
 import { use, useState } from "react";
 import { Button } from "react-aria-components";
-import type { Todo } from "../types.ts";
+import type { Todo } from "../types/Todo.ts";
 import { addTodo } from "../actions/addTodo.ts";
 import { deleteTodo } from "../actions/deleteTodo.ts";
 import { getTodos } from "../actions/getTodos.ts";

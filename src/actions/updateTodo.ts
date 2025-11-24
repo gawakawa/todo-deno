@@ -1,4 +1,4 @@
-import type { Todo } from "../types.ts";
+import type { Todo } from "../types/Todo.ts";
 import { STORE_NAME } from "./const.ts";
 import { initDB } from "./initDB.ts";
 

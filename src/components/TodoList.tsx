@@ -1,4 +1,4 @@
-import type { Todo } from "../types.ts";
+import type { Todo } from "../types/Todo.ts";
 import { TodoItem } from "./TodoItem.tsx";
 
 type TodoListProps = {

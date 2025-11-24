@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Checkbox, Input, TextField } from "react-aria-components";
-import type { Todo } from "../types.ts";
+import type { Todo } from "../types/Todo.ts";
 
 type TodoItemProps = {
   todo: Todo;

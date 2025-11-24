@@ -4,7 +4,7 @@ import { afterEach, describe, it } from "@std/testing/bdd";
 import "fake-indexeddb/auto";
 import { addTodo } from "./addTodo.ts";
 import { initDB } from "./initDB.ts";
-import type { Todo } from "../types.ts";
+import type { Todo } from "../types/Todo.ts";
 
 afterEach(async () => {
   await new Promise<void>((resolve) => {
