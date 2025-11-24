@@ -1,13 +1,25 @@
 {
   "nodeModulesDir": "auto",
   "tasks": {
-    "dev": "deno run --allow-net --allow-read --allow-write --allow-env --allow-ffi --allow-sys --allow-run npm:vite",
-    "build": "deno run --allow-read --allow-write --allow-env npm:@typescript/native-preview -b && deno run --allow-net --allow-read --allow-write --allow-env --allow-ffi --allow-sys --allow-run npm:vite build",
-    "preview": "deno run --allow-net --allow-read --allow-env --allow-ffi --allow-sys --allow-run npm:vite preview",
+    "dev": "deno run --node-modules-dir=auto --allow-net --allow-read --allow-write --allow-env --allow-ffi --allow-sys --allow-run npm:rolldown-vite@7.2.5",
+    "build": "deno run --node-modules-dir=auto --allow-net --allow-read --allow-write --allow-env --allow-ffi --allow-sys --allow-run npm:rolldown-vite@7.2.5 build",
+    "preview": "deno run --node-modules-dir=auto --allow-net --allow-read --allow-env --allow-ffi --allow-sys --allow-run npm:rolldown-vite@7.2.5 preview",
     "lint": "deno lint",
     "test": "deno test --allow-read --allow-write --allow-env"
   },
   "imports": {
+    "react": "npm:react@^19.2.0",
+    "react-dom": "npm:react-dom@^19.2.0",
+    "react-aria-components": "npm:react-aria-components@^1.5.2",
+    "@types/react": "npm:@types/react@^19.2.5",
+    "@types/react-dom": "npm:@types/react-dom@^19.2.3",
+    "@types/node": "npm:@types/node@^24.10.1",
+    "vite": "npm:rolldown-vite@7.2.5",
+    "@vitejs/plugin-react": "npm:@vitejs/plugin-react@^5.1.1",
+    "tailwindcss": "npm:tailwindcss@^3.4.17",
+    "tailwindcss-react-aria-components": "npm:tailwindcss-react-aria-components@^1.1.7",
+    "autoprefixer": "npm:autoprefixer@^10.4.20",
+    "postcss": "npm:postcss@^8.4.49",
     "fake-indexeddb": "npm:fake-indexeddb@^6.0.0",
     "fake-indexeddb/auto": "npm:fake-indexeddb@^6.0.0/auto",
     "deno-dom": "jsr:@b-fuze/deno-dom@^0.1.48",
