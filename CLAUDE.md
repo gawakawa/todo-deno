@@ -57,6 +57,18 @@ nix fmt -- --ci
 deno test
 ```
 
+## Deployment
+
+The application is deployed on Deno Deploy with GitHub integration:
+
+- **Production URL**: https://todo-deno.gawakawa.deno.net/
+- **Platform**: Deno Deploy
+- **Deployment method**: Automatic deployment via GitHub integration
+- **Trigger**: Changes pushed to the main branch are automatically deployed
+
+The GitHub-Deno Deploy integration handles automatic deployments, so no manual
+deployment steps are required once changes are merged to main.
+
 ## Architecture
 
 This is a standard Vite + React SPA with a minimal architecture:

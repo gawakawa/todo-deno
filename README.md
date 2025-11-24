@@ -11,7 +11,7 @@ Vite.
 
 ## Usage
 
-WIP
+The application is live at: https://todo-deno.gawakawa.deno.net/
 
 ## Development
 
@@ -47,6 +47,10 @@ deno task preview
 # Format Nix and TypeScript files
 nix fmt
 ```
+
+## Deployment
+
+Deployed on Deno Deploy with automatic deployment from GitHub.
 
 ## Directory Structure
 
