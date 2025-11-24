@@ -1,7 +1,6 @@
 # Todo App (Verification)
 
-A Todo application for verification purposes, built with React + TypeScript +
-Vite.
+A Todo application using IndexedDB for local storage.
 
 ## Requirements
 
@@ -37,6 +36,12 @@ deno task build
 # Lint
 deno task lint
 
+# Type check
+deno check
+
+# Test
+deno test
+
 # Preview
 deno task preview
 ```
@@ -64,14 +69,18 @@ Deployed on Deno Deploy with automatic deployment from GitHub.
 │   ├── App.css            # App styles
 │   ├── main.tsx           # Entry point
 │   ├── index.css          # Global styles
+│   ├── types/             # TypeScript type definitions
+│   ├── components/        # React components
+│   ├── actions/           # Action functions
 │   └── assets/            # Static assets
+├── tests/                 # Test files
 ├── public/                # Public files
 ├── index.html             # HTML template
 ├── vite.config.ts         # Vite configuration
 ├── tsconfig.json          # TypeScript configuration
 ├── tsconfig.app.json      # TypeScript app configuration
 ├── tsconfig.node.json     # TypeScript node configuration
-├── eslint.config.js       # ESLint configuration
+├── deno.json              # Deno configuration and tasks
 ├── package.json           # npm package configuration
 └── deno.lock              # Deno lock file
 ```

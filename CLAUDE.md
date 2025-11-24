@@ -50,11 +50,21 @@ nix fmt
 nix fmt -- --ci
 ```
 
+### Type Checking
+
+```bash
+# Type check TypeScript files
+deno check
+```
+
 ### Testing
 
 ```bash
 # Run tests
 deno test
+
+# Run tests with permissions (when needed)
+deno test --allow-read --allow-write --allow-env
 ```
 
 ## Deployment
@@ -71,13 +81,48 @@ deployment steps are required once changes are merged to main.
 
 ## Architecture
 
-This is a standard Vite + React SPA with a minimal architecture:
+This is a standard Vite + React SPA with client-side state management and
+IndexedDB persistence:
+
+### Core Structure
 
 - **Entry point**: `src/main.tsx` renders the root `App` component into `#root`
-- **Main component**: `src/App.tsx` contains the primary application logic
+- **App component**: `src/App.tsx` uses React 19's `use()` hook with Suspense
+  for data loading
+- **Container pattern**: `TodoContainer` manages all state and CRUD operations,
+  passing handlers to child components
 - **Build tool**: Vite (specifically rolldown-vite@7.2.5) with React plugin
-- **Package override**: Uses `rolldown-vite` instead of standard Vite via npm
-  override
+
+### Component Hierarchy
+
+```
+App (Suspense boundary)
+└── TodoContainer (state management)
+    ├── TodoForm (add new todos)
+    └── TodoList (display todos)
+        └── TodoItem (individual todo with edit/delete)
+```
+
+### Data Flow
+
+- **Storage**: IndexedDB via action functions in `src/actions/`
+  - `initDB.ts` - Database initialization with auto-incrementing IDs
+  - `getTodos.ts` - Fetch all todos (returns Promise for Suspense)
+  - `addTodo.ts` - Create new todo
+  - `updateTodo.ts` - Partial update (completion toggle or title edit)
+  - `deleteTodo.ts` - Delete by ID
+  - `const.ts` - Database constants (DB_NAME, DB_VERSION, STORE_NAME)
+- **State**: React 19 features (`use()` hook, Suspense) with local state in
+  TodoContainer
+- **Updates**: After each mutation, todos are reloaded from IndexedDB to ensure
+  consistency
+
+### Styling
+
+- **TailwindCSS** for utility classes with dark mode support
+- **React Aria Components** for accessible UI primitives (Button, TextField,
+  etc.)
+- Component styles in individual `.css` files where needed
 
 ## Nix Configuration
 
