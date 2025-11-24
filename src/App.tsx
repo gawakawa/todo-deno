@@ -1,9 +1,9 @@
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import { getTodos } from "./actions/getTodos.ts";
 import { TodoContainer } from "./components/TodoContainer.tsx";
 import "./App.css";
 
-const App = (): JSX.Element => {
+const App = (): React.JSX.Element => {
   const todosPromise = getTodos();
 
   return (

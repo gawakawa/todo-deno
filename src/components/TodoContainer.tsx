@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import React, { use, useState } from "react";
 import { Button } from "react-aria-components";
 import type { Todo } from "../types/Todo.ts";
 import { addTodo } from "../actions/addTodo.ts";
@@ -14,7 +14,7 @@ interface TodoContainerProps {
 
 export const TodoContainer = (
   { todosPromise }: TodoContainerProps,
-): JSX.Element => {
+): React.JSX.Element => {
   const initialTodos = use(todosPromise);
   const [todos, setTodos] = useState<Todo[]>(initialTodos);
 

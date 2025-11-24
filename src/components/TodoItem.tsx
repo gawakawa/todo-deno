@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button, Checkbox, Input, TextField } from "react-aria-components";
 import type { Todo } from "../types/Todo.ts";
 
@@ -14,7 +14,7 @@ export const TodoItem = ({
   onToggle,
   onUpdate,
   onDelete,
-}: TodoItemProps): JSX.Element => {
+}: TodoItemProps): React.JSX.Element => {
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(todo.title);
 

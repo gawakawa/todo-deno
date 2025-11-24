@@ -1,3 +1,4 @@
+import React from "react";
 import type { Todo } from "../types/Todo.ts";
 import { TodoItem } from "./TodoItem.tsx";
 
@@ -13,7 +14,7 @@ export const TodoList = ({
   onToggle,
   onUpdate,
   onDelete,
-}: TodoListProps): JSX.Element => {
+}: TodoListProps): React.JSX.Element => {
   if (todos.length === 0) {
     return (
       <div className="py-16 text-center">
