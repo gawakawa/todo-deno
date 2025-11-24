@@ -1,7 +1,10 @@
 import { use, useState } from "react";
 import { Button } from "react-aria-components";
 import type { Todo } from "../types.ts";
-import { addTodo, deleteTodo, getTodos, updateTodo } from "../db.ts";
+import { addTodo } from "../actions/addTodo.ts";
+import { deleteTodo } from "../actions/deleteTodo.ts";
+import { getTodos } from "../actions/getTodos.ts";
+import { updateTodo } from "../actions/updateTodo.ts";
 import { TodoForm } from "./TodoForm.tsx";
 import { TodoList } from "./TodoList.tsx";
 

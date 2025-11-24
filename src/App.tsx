@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { getTodos } from "./db.ts";
+import { getTodos } from "./actions/getTodos.ts";
 import { TodoContainer } from "./components/TodoContainer.tsx";
 import "./App.css";
 
