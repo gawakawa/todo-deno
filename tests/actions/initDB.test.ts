@@ -2,7 +2,7 @@
 import { assertEquals, assertExists } from "@std/assert";
 import { afterEach, describe, it } from "@std/testing/bdd";
 import "fake-indexeddb/auto";
-import { initDB } from "./initDB.ts";
+import { initDB } from "../../src/actions/initDB.ts";
 
 afterEach(async () => {
   await new Promise<void>((resolve) => {

@@ -2,8 +2,8 @@
 import { assertEquals, assertExists } from "@std/assert";
 import { afterEach, describe, it } from "@std/testing/bdd";
 import "fake-indexeddb/auto";
-import { addTodo } from "./addTodo.ts";
-import { getTodos } from "./getTodos.ts";
+import { addTodo } from "../../src/actions/addTodo.ts";
+import { getTodos } from "../../src/actions/getTodos.ts";
 
 afterEach(async () => {
   await new Promise<void>((resolve) => {
