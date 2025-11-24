@@ -1,0 +1,13 @@
+{
+  "nodeModulesDir": "auto",
+  "tasks": {
+    "dev": "deno run --allow-net --allow-read --allow-env npm:vite",
+    "build": "deno run --allow-read --allow-write --allow-env npm:@typescript/native-preview -b && deno run --allow-net --allow-read --allow-write --allow-env npm:vite build",
+    "preview": "deno run --allow-net --allow-read --allow-env npm:vite preview",
+    "lint": "deno lint",
+    "test": "deno test --allow-read --allow-write"
+  },
+  "imports": {
+    "fake-indexeddb": "npm:fake-indexeddb@^6.0.0"
+  }
+}
