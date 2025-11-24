@@ -45,8 +45,8 @@ export const TodoItem = ({
     }
   };
 
-  if (isEditing) {
-    return (
+  return isEditing
+    ? (
       <li className="flex items-center gap-3 py-3 px-4 bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 rounded-md">
         <TextField value={editText} onChange={setEditText} className="flex-1">
           <Input
@@ -57,36 +57,34 @@ export const TodoItem = ({
           />
         </TextField>
       </li>
+    )
+    : (
+      <li className="group/item flex items-center gap-3 py-3 px-4 border-b border-zinc-200 dark:border-zinc-800 last:border-b-0 transition-colors hovered:bg-zinc-50 dark:hovered:bg-zinc-800/50">
+        <Checkbox
+          isSelected={todo.completed}
+          onChange={() => onToggle(todo.id)}
+          className="flex items-center cursor-pointer outline-none group/checkbox"
+        >
+          <div className="w-5 h-5 border-2 border-zinc-300 dark:border-zinc-600 rounded transition-all group-selected/checkbox:border-zinc-900 dark:group-selected/checkbox:border-zinc-100 group-selected/checkbox:bg-zinc-900 dark:group-selected/checkbox:bg-zinc-100 focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900">
+            <CheckIcon className="w-full h-full fill-none stroke-white dark:stroke-zinc-900 stroke-[3] opacity-0 group-selected/checkbox:opacity-100 transition-opacity" />
+          </div>
+        </Checkbox>
+        <span
+          onDoubleClick={handleDoubleClick}
+          className={`flex-1 text-sm cursor-pointer select-none transition-colors ${
+            todo.completed
+              ? "line-through text-zinc-400 dark:text-zinc-600"
+              : "text-zinc-900 dark:text-zinc-100"
+          }`}
+        >
+          {todo.title}
+        </span>
+        <Button
+          onPress={() => onDelete(todo.id)}
+          className="px-3 py-1.5 text-xs text-zinc-500 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 rounded transition-colors outline-none hovered:text-zinc-900 dark:hovered:text-zinc-100 hovered:border-zinc-400 dark:hovered:border-zinc-600 pressed:bg-zinc-100 dark:pressed:bg-zinc-800 focus-visible:ring-1 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600"
+        >
+          Delete
+        </Button>
+      </li>
     );
-  }
-
-  return (
-    <li className="group/item flex items-center gap-3 py-3 px-4 border-b border-zinc-200 dark:border-zinc-800 last:border-b-0 transition-colors hovered:bg-zinc-50 dark:hovered:bg-zinc-800/50">
-      <Checkbox
-        isSelected={todo.completed}
-        onChange={() => onToggle(todo.id)}
-        className="flex items-center cursor-pointer outline-none group/checkbox"
-      >
-        <div className="w-5 h-5 border-2 border-zinc-300 dark:border-zinc-600 rounded transition-all group-selected/checkbox:border-zinc-900 dark:group-selected/checkbox:border-zinc-100 group-selected/checkbox:bg-zinc-900 dark:group-selected/checkbox:bg-zinc-100 focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900">
-          <CheckIcon className="w-full h-full fill-none stroke-white dark:stroke-zinc-900 stroke-[3] opacity-0 group-selected/checkbox:opacity-100 transition-opacity" />
-        </div>
-      </Checkbox>
-      <span
-        onDoubleClick={handleDoubleClick}
-        className={`flex-1 text-sm cursor-pointer select-none transition-colors ${
-          todo.completed
-            ? "line-through text-zinc-400 dark:text-zinc-600"
-            : "text-zinc-900 dark:text-zinc-100"
-        }`}
-      >
-        {todo.title}
-      </span>
-      <Button
-        onPress={() => onDelete(todo.id)}
-        className="px-3 py-1.5 text-xs text-zinc-500 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 rounded transition-colors outline-none hovered:text-zinc-900 dark:hovered:text-zinc-100 hovered:border-zinc-400 dark:hovered:border-zinc-600 pressed:bg-zinc-100 dark:pressed:bg-zinc-800 focus-visible:ring-1 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600"
-      >
-        Delete
-      </Button>
-    </li>
-  );
 };
