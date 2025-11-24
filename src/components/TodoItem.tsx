@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Checkbox, Input, TextField } from "react-aria-components";
 import type { Todo } from "../types/Todo.ts";
+import { CheckIcon } from "../assets/CheckIcon.tsx";
 
 type TodoItemProps = {
   todo: Todo;
@@ -67,13 +68,7 @@ export const TodoItem = ({
         className="flex items-center cursor-pointer outline-none group/checkbox"
       >
         <div className="w-5 h-5 border-2 border-zinc-300 dark:border-zinc-600 rounded transition-all group-selected/checkbox:border-zinc-900 dark:group-selected/checkbox:border-zinc-100 group-selected/checkbox:bg-zinc-900 dark:group-selected/checkbox:bg-zinc-100 focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900">
-          <svg
-            viewBox="0 0 18 18"
-            aria-hidden="true"
-            className="w-full h-full fill-none stroke-white dark:stroke-zinc-900 stroke-[3] opacity-0 group-selected/checkbox:opacity-100 transition-opacity"
-          >
-            <polyline points="1 9 7 14 15 4" />
-          </svg>
+          <CheckIcon className="w-full h-full fill-none stroke-white dark:stroke-zinc-900 stroke-[3] opacity-0 group-selected/checkbox:opacity-100 transition-opacity" />
         </div>
       </Checkbox>
       <span
