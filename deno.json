@@ -15,6 +15,7 @@
     "test": "deno test --allow-read --allow-write --allow-env"
   },
   "imports": {
+    "babel-plugin-react-compiler": "npm:babel-plugin-react-compiler@^1.0.0",
     "react": "npm:react@^19.2.0",
     "react-dom": "npm:react-dom@^19.2.0",
     "react-aria-components": "npm:react-aria-components@^1.13.0",

@@ -23,6 +23,7 @@
     "npm:@typescript/native-preview@*": "7.0.0-dev.20251124.1",
     "npm:@vitejs/plugin-react@^5.1.1": "5.1.1_vite@7.2.4__@types+node@24.10.1__picomatch@4.0.3_@babel+core@7.28.5_@types+node@24.10.1",
     "npm:autoprefixer@^10.4.22": "10.4.22_postcss@8.5.6",
+    "npm:babel-plugin-react-compiler@1": "1.0.0",
     "npm:fake-indexeddb@^6.2.5": "6.2.5",
     "npm:postcss@^8.5.6": "8.5.6",
     "npm:react-aria-components@^1.13.0": "1.13.0_react@19.2.0_react-dom@19.2.0__react@19.2.0",
@@ -2142,6 +2143,12 @@
       ],
       "bin": true
     },
+    "babel-plugin-react-compiler@1.0.0": {
+      "integrity": "sha512-Ixm8tFfoKKIPYdCCKYTsqv+Fd4IJ0DQqMyEimo+pxUOMUR9cVPlwTrFt9Avu+3cb6Zp3mAzl+t1MrG2fxxKsxw==",
+      "dependencies": [
+        "@babel/types"
+      ]
+    },
     "baseline-browser-mapping@2.8.31": {
       "integrity": "sha512-a28v2eWrrRWPpJSzxc+mKwm0ZtVx/G8SepdQZDArnXYU/XS+IF6mp8aB/4E+hH1tyGCoDo3KlUCdlSxGDsRkAw==",
       "bin": true
@@ -2980,6 +2987,7 @@
       "npm:@types/react@^19.2.7",
       "npm:@vitejs/plugin-react@^5.1.1",
       "npm:autoprefixer@^10.4.22",
+      "npm:babel-plugin-react-compiler@1",
       "npm:fake-indexeddb@^6.2.5",
       "npm:postcss@^8.5.6",
       "npm:react-aria-components@^1.13.0",
