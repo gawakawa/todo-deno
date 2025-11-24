@@ -5,9 +5,11 @@
     "build": "deno run --allow-read --allow-write --allow-env npm:@typescript/native-preview -b && deno run --allow-net --allow-read --allow-write --allow-env npm:vite build",
     "preview": "deno run --allow-net --allow-read --allow-env npm:vite preview",
     "lint": "deno lint",
-    "test": "deno test --allow-read --allow-write"
+    "test": "deno test --allow-read --allow-write --allow-env"
   },
   "imports": {
-    "fake-indexeddb": "npm:fake-indexeddb@^6.0.0"
+    "fake-indexeddb": "npm:fake-indexeddb@^6.0.0",
+    "deno-dom": "jsr:@b-fuze/deno-dom@^0.1.48",
+    "@testing-library/react": "npm:@testing-library/react@^16.0.0"
   }
 }

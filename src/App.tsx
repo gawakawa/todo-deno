@@ -1,35 +1,58 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import type { Todo } from "./types.ts";
+import { addTodo, deleteTodo, getTodos, updateTodo } from "./db.ts";
+import { TodoForm } from "./components/TodoForm.tsx";
+import { TodoList } from "./components/TodoList.tsx";
 import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0);
+const App = (): JSX.Element => {
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  const handleLoad = async (): Promise<void> => {
+    const loadedTodos = await getTodos();
+    setTodos(loadedTodos);
+  };
+
+  const handleAdd = async (title: string): Promise<void> => {
+    await addTodo(title);
+    const updatedTodos = await getTodos();
+    setTodos(updatedTodos);
+  };
+
+  const handleToggle = async (id: number): Promise<void> => {
+    const todo = todos.find((t) => t.id === id);
+    if (todo) {
+      await updateTodo(id, { completed: !todo.completed });
+      const updatedTodos = await getTodos();
+      setTodos(updatedTodos);
+    }
+  };
+
+  const handleUpdate = async (id: number, title: string): Promise<void> => {
+    await updateTodo(id, { title });
+    const updatedTodos = await getTodos();
+    setTodos(updatedTodos);
+  };
+
+  const handleDelete = async (id: number): Promise<void> => {
+    await deleteTodo(id);
+    const updatedTodos = await getTodos();
+    setTodos(updatedTodos);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <h1>Todo アプリ</h1>
+      <button onClick={handleLoad}>読み込み</button>
+      <TodoForm onAdd={handleAdd} />
+      <TodoList
+        todos={todos}
+        onToggle={handleToggle}
+        onUpdate={handleUpdate}
+        onDelete={handleDelete}
+      />
+    </div>
   );
-}
+};
 
 export default App;
